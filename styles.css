@@ -1,0 +1,102 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  .timeBox{
+    margin: 10px;
+    width: 100px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #f1e7a9;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #3F58FF;
+  }
+  .mainBox {
+    width: 700px;
+    height: 350px;
+    border: 5px solid #F3FF5B;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+  }
+  .divQText{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 700px;
+    height: 250px;
+    background-color: #FFE63F;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+  }
+  .qText{
+    margin: 4px;
+    text-align: center;
+  }
+  .lowerBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 700px;
+    height: 450px;
+    background-color: #FFE63F;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+  .aText{
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 25px;
+    width: 500px;
+    height: 150px;
+    background-color: white;
+  }
+  #typedText{
+    margin: 10px;
+  }
+  .right{
+    color: #00FF13;
+  }
+  .wrong{
+    color: red;
+    text-decoration-line: underline;
+  }
+  .normal{
+    color: black;
+    text-decoration-line: underline;
+  }
+  .time{
+    margin-bottom: 20px;
+  }
+  .btn{
+    margin-top: 20px;
+  }
+  .nnqq{
+    display: flex;
+    gap: 15px;
+  }
+  .qqnn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid black;
+    margin-top: 12px;
+    padding: 4px;
+    border-radius: 25px;
+    background-color: #f1e7a9;
+    width: 150px;
+  }
