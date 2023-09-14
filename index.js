@@ -1,9 +1,6 @@
 var sysQuoteLen = 0, usrQuoteLen = 0, mistakes = 0, timeTaken = 0, attempt = 0, speed = 0, accuracy = 0;
 var wpmList = [], accuracyList = [];
 
-
-
-
 async function getQuote() {
     const response = await fetch("https://api.quotable.io/random");
     const data = await response.json();
@@ -29,11 +26,17 @@ function display() {
     setTimeout(display, 1000);
     timeTaken = timeDiff;
 }
+//document.getElementById("typedText").click();
 
 startTime = new Date(); // Set the start time
 display(); // Start the countdown
 
-
+var handleBackspace = function(event){
+    let key = event.key;
+    if (key === "Backspace" || key === "Delete"){
+        mistakes++;
+    }
+}
 
 async function fetchAndDisplayQuote() {
     const quote = await getQuote();
@@ -60,8 +63,10 @@ async function fetchAndDisplayQuote() {
         span.setAttribute('id', newID);
         niq++;
     });
+
     console.log(quote);
     const textarea = document.getElementById("typedText");
+    textarea.addEventListener('keydown', handleBackspace)
     textarea.addEventListener("input", ev => {
         const userTypedText = textarea.value;
         for (var i = 0; i < sysQuoteLen; i++) {
@@ -74,7 +79,7 @@ async function fetchAndDisplayQuote() {
         if (i >= userTypedText.length) {
             // Remove classes for the remaining spans when Backspace is pressed
             document.getElementById("span" + i).classList.remove("right", "wrong");
-            mistakes++;
+            //mistakes++;
         } else if (quote[i] === userTypedText[i]) {
             document.getElementById("span" + i).classList.add("right");
             document.getElementById("span" + i).classList.remove("wrong");
@@ -86,15 +91,14 @@ async function fetchAndDisplayQuote() {
     });    
 }
 
-
 function nextQuote(){
     const divToRemove = document.querySelector(".qText");
-
 // Remove all children of the div
     while (divToRemove.firstChild) {
       divToRemove.removeChild(divToRemove.firstChild);
     }
     console.log(timeTaken);
+    console.log(mistakes);
     wpmList.push(sysQuoteLen/(timeTaken/60));
     accuracyList.push(((sysQuoteLen - mistakes)/sysQuoteLen)*100);
     sumWPM = 0;
@@ -114,11 +118,10 @@ function nextQuote(){
     quote = "";
     quotations = "";
     mistakes = 0;
+    //document.getElementById("typedText").replaceWith(document.getElementById("typedText").cloneNode(true));
+    document.getElementById("typedText").removeEventListener('keydown', handleBackspace);
     fetchAndDisplayQuote();
 }
-
-
 fetchAndDisplayQuote();
-
 
 
